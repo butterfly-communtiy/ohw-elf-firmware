@@ -56,7 +56,7 @@ void app_display_loop()
 	while (1) {
 		uint32_t sleep_ms = lv_timer_handler();
 
-		uint32_t real_sleep = sleep_ms >= UINT32_MAX ? 100 : sleep_ms;
+		uint32_t real_sleep = (sleep_ms == UINT32_MAX) ? 100 : ((sleep_ms > 0) ? sleep_ms : 10);
 
 		unsigned int pin;
 
